@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo — Belavie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Belavie</a>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="trocas.html">Trocas</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="Buscar" onclick="document.getElementById('search-input').focus()">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-head container">
+  <span class="eyebrow">Catálogo</span>
+  <h1>Nossa coleção</h1>
+  <p>Peças escolhidas com cuidado para compor um guarda-roupa atemporal.</p>
+</section>
+
+<section class="container" style="padding-bottom:70px;">
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Buscar peças...">
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-btn active" data-category="Todos">Todos</button>
+    <button class="filter-btn" data-category="Vestidos">Vestidos</button>
+    <button class="filter-btn" data-category="Blusas">Blusas</button>
+    <button class="filter-btn" data-category="Calças">Calças</button>
+    <button class="filter-btn" data-category="Shorts">Shorts</button>
+    <button class="filter-btn" data-category="Camisas">Camisas/Jaquetas</button>
+    <button class="filter-btn" data-category="Acessórios">Acessórios</button>
+    <button class="filter-btn" data-category="Conjuntos">Conjuntos</button>
+    <button class="filter-btn" data-category="Macacão">Macacão</button>
+  </div>
+
+  <div class="result-count" id="result-count">8 PEÇAS</div>
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="logo">Belavie</span>
+        <p class="footer-tagline">Moda para celebrar cada fase</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <a href="index.html">Início</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Ajuda</h5>
+        <a href="faq.html">Perguntas frequentes</a>
+        <a href="trocas.html">Política de troca</a>
+        <a href="#" onclick="openWhatsApp('Olá! Preciso de atendimento.'); return false;">Atendimento WhatsApp</a>
+      </div>
+       <div class="footer-col">
+        <h5>Contato</h5>
+        <p>contatobelavie@gmail.com</p>
+        <p>João Pessoa, PB</p>
+        <p>@belavie.loja.oficial</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Belavie. Todos os direitos reservados.</span>
+      <span>Feito com carinho no Brasil.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="whatsapp-float" onclick="openWhatsApp('Olá! Vim pelo site da Belavie.'); return false;" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.22 8.22 0 1 1 6.99 3.87zm4.51-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.85-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.76 2.69 4.26 3.77.6.26 1.06.41 1.43.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+</a>
+
+<script src="js/products.js"></script>
+<script src="js/script.js"></script>
+<script>
+  // Aplica filtro de categoria vindo pela URL (?cat=Vestidos), se houver
+  const params = new URLSearchParams(window.location.search);
+  const catParam = params.get("cat");
+  if (catParam) {
+    const btn = document.querySelector(`.filter-btn[data-category="${catParam}"]`);
+    if (btn) btn.click();
+  }
+</script>
+</body>
+</html>
