@@ -637,14 +637,25 @@ function formatPrice(v) {
 }
 
 function productCardHTML(p) {
+  const favActive = isFavorite(p.id) ? "active" : "";
   return `
-    <a href="produto.html?id=${p.id}" class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" onclick="handleCardClick(event, ${p.id})">
       <div class="product-image">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <button class="favorite-btn ${favActive}" aria-label="Favoritar" onclick="toggleFavoriteClick(event, ${p.id})">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="${favActive ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
+          </svg>
+        </button>
       </div>
       <div class="product-cat">${p.category}</div>
       <div class="product-name">${p.name}</div>
       <div class="product-price">${formatPrice(p.price)}</div>
-    </a>
+    </div>
   `;
+}
+
+function handleCardClick(event, id) {
+  if (event.target.closest(".favorite-btn")) return;
+  window.location.href = `produto.html?id=${id}`;
 }

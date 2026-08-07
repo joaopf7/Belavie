@@ -928,3 +928,77 @@ hr.policy-divider { border: none; border-top: 1px solid var(--line); margin: 30p
   cursor: pointer;
 }
 .sort-row select:focus { outline: none; border-color: var(--accent-gold); }
+
+/* ---------- Favoritos ---------- */
+.product-image { position: relative; }
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(250, 246, 236, 0.9);
+  color: var(--brown-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .15s ease, color .15s ease;
+  z-index: 2;
+}
+.favorite-btn:hover { transform: scale(1.1); }
+.favorite-btn.active { color: #c0392b; }
+
+.favorites-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.empty-favorites {
+  text-align: center;
+  padding: 60px 0;
+}
+.empty-favorites p {
+  color: var(--text-soft);
+  margin-bottom: 20px;
+}
+
+/* ---------- Barra de envio de favoritos ---------- */
+.favorites-whatsapp-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-cream-dark);
+  border: 1px solid var(--line);
+  padding: 18px 24px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.favorites-whatsapp-bar strong {
+  color: var(--brown-dark);
+  font-size: 15px;
+  margin-right: 6px;
+}
+.favorites-whatsapp-bar span {
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .favorites-whatsapp-bar { flex-direction: column; align-items: stretch; text-align: center; }
+}
