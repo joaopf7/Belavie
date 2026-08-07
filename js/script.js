@@ -54,16 +54,27 @@ function setupCatalogFilters() {
 
   const filterButtons = document.querySelectorAll(".filter-btn");
   const searchInput = document.querySelector("#search-input");
+  const sortSelect = document.querySelector("#sort-select");
   const resultCount = document.querySelector("#result-count");
   let activeCategory = "Todos";
 
   function render() {
     const term = (searchInput?.value || "").toLowerCase().trim();
-    const filtered = PRODUCTS.filter((p) => {
+    let filtered = PRODUCTS.filter((p) => {
       const matchesCategory = activeCategory === "Todos" || p.category === activeCategory;
       const matchesTerm = p.name.toLowerCase().includes(term);
       return matchesCategory && matchesTerm;
     });
+
+    // aplica a ordenação escolhida
+    const sortValue = sortSelect?.value || "relevance";
+    if (sortValue === "price-asc") {
+      filtered = filtered.sort((a, b) => a.price - b.price);
+    } else if (sortValue === "price-desc") {
+      filtered = filtered.sort((a, b) => b.price - a.price);
+    } else if (sortValue === "newest") {
+      filtered = filtered.sort((a, b) => b.id - a.id); // maior id = adicionado mais recente
+    }
 
     grid.innerHTML = filtered.map(productCardHTML).join("");
     if (resultCount) {
@@ -81,6 +92,7 @@ function setupCatalogFilters() {
   });
 
   if (searchInput) searchInput.addEventListener("input", render);
+  if (sortSelect) sortSelect.addEventListener("change", render);
 
   render();
 }

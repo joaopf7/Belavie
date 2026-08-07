@@ -506,11 +506,128 @@ const PRODUCTS = [
   },
   {
     id: 57,
-    name: "Vestido Cris",
-    category: "Vestidos",
+    name: "Macacão Cris",
+    category: "Macacão",
     price: 120.00,
     ph: "ph-a",
     img: "img/image57.jpeg",
+    featured: false
+  },
+  {
+    id: 58,
+    name: "Conjunto Liara",
+    category: "Conjuntos",
+    price: 195.00,
+    ph: "ph-f",
+    img: "img/image58.jpeg",
+    featured: false
+  },
+  {
+    id: 59,
+    name: "Conjunto Regina",
+    category: "Conjuntos",
+    price: 200.00,
+    ph: "ph-g",
+    img: "img/image59.jpeg",
+    featured: false
+  },
+  {
+    id: 60,
+    name: "Macacão Roberta",
+    category: "Macacão",
+    price: 205.00,
+    ph: "ph-f",
+    img: "img/image60.jpeg",
+    featured: false
+  },
+  {
+    id: 61,
+    name: "Macacão Roberta",
+    category: "Macacão",
+    price: 205.00,
+    ph: "ph-g",
+    img: "img/image61.jpeg",
+    featured: false
+  },
+  {
+    id: 62,
+    name: "Vestido Larissa",
+    category: "Vestidos",
+    price: 205.00,
+    ph: "ph-h",
+    img: "img/image62.jpeg",
+    featured: false
+  },
+  {
+    id: 63,
+    name: "Vestido Manuela",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-a",
+    img: "img/image63.jpeg",
+    featured: false
+  },
+  {
+    id: 64,
+    name: "Vestido Leticia",
+    category: "Vestidos",
+    price: 205.00,
+    ph: "ph-b",
+    img: "img/image64.jpeg",
+    featured: false
+  },
+  {
+    id: 65,
+    name: "Vestido Clarisse",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-c",
+    img: "img/image65.jpeg",
+    featured: false
+  },
+  {
+    id: 66,
+    name: "Vestido Clarisse",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-d",
+    img: "img/image66.jpeg",
+    featured: false
+  },
+  {
+    id: 67,
+    name: "Vestido Manuela",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-e",
+    img: "img/image67.jpeg",
+    featured: false
+  },
+  {
+    id: 68,
+    name: "Vestido Serena",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-f",
+    img: "img/image68.jpeg",
+    featured: false
+  },
+  {
+    id: 69,
+    name: "Vestido Serena",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-g",
+    img: "img/image69.jpeg",
+    featured: false
+  },
+  {
+    id: 70,
+    name: "Chemise listrada",
+    category: "Vestidos",
+    price: 165.00,
+    ph: "ph-f",
+    img: "img/image70.jpeg",
     featured: false
   }
 ];
@@ -521,11 +638,13 @@ function formatPrice(v) {
 
 function productCardHTML(p) {
   return `
-    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
-      <div class="product-image">  <img src="${p.img}" alt="${p.name}" loading="lazy"> </div>
+    <a href="produto.html?id=${p.id}" class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+      <div class="product-image">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+      </div>
       <div class="product-cat">${p.category}</div>
       <div class="product-name">${p.name}</div>
       <div class="product-price">${formatPrice(p.price)}</div>
-    </div>
+    </a>
   `;
 }
