@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.title = `${product.name} — Belavie`;
 
+  const favActive = isFavorite(product.id) ? "active" : "";
+
   wrap.innerHTML = `
     <div class="product-detail-grid">
       <div class="product-detail-image" id="detail-image-trigger" role="button" tabindex="0" aria-label="Ampliar imagem">
@@ -33,7 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </span>
       </div>
       <div class="product-detail-info">
-        <div class="product-cat">${product.category}</div>
+        <div class="product-detail-top-row">
+          <div class="product-cat">${product.category}</div>
+          <button class="favorite-btn detail-favorite-btn ${favActive}" id="detail-favorite-btn" aria-label="Favoritar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="${favActive ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
+            </svg>
+          </button>
+        </div>
         <h1>${product.name}</h1>
         <div class="product-detail-price">${formatPrice(product.price)}</div>
         <p class="product-detail-description">
@@ -58,7 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupLightbox(product);
   setupShareButton(product);
+  setupDetailFavorite(product);
 });
+
+// -------------------- Favoritar (página de detalhes) --------------------
+function setupDetailFavorite(product) {
+  const btn = document.getElementById("detail-favorite-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const nowActive = toggleFavorite(product.id);
+    btn.classList.toggle("active", nowActive);
+    const svg = btn.querySelector("svg");
+    if (svg) svg.setAttribute("fill", nowActive ? "currentColor" : "none");
+  });
+}
 
 // -------------------- Lightbox --------------------
 function setupLightbox(product) {

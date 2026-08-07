@@ -1002,3 +1002,19 @@ hr.policy-divider { border: none; border-top: 1px solid var(--line); margin: 30p
 @media (max-width: 640px) {
   .favorites-whatsapp-bar { flex-direction: column; align-items: stretch; text-align: center; }
 }
+
+/* ---------- Favoritar na página de detalhes ---------- */
+.product-detail-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-favorite-btn {
+  position: static;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-cream-dark);
+  border: 1px solid var(--line);
+}
+.detail-favorite-btn:hover { transform: scale(1.08); }
