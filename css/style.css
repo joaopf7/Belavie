@@ -288,7 +288,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 }
-.product-card { cursor: default; }
+.product-card { cursor: pointer; }
 .product-image {
   aspect-ratio: 3/4;
   background: var(--bg-cream-dark);
