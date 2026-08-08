@@ -18,7 +18,7 @@ const PRODUCTS = [
     price: 235.00,
     ph: "ph-b",
     img: "img/image2.jpeg",
-    featured: true,
+    featured: false,
     sizes: ["Único"],
     sizeInfo: "Veste do 38 ao 42"
   },
@@ -29,7 +29,7 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-c",
     img: "img/image3.jpeg",
-    featured: true,
+    featured: false,
     sizes: ["36"]
   },
   {
@@ -39,7 +39,7 @@ const PRODUCTS = [
     price: 220.00,
     ph: "ph-d",
     img: "img/image4.jpeg",
-    featured: true,
+    featured: false,
     sizes: ["P", "M", "G"],
     sizeInfo: "Disponível na cor Marrom (P, M e G) e também na cor Azul (P)"
   },
@@ -50,7 +50,7 @@ const PRODUCTS = [
     price: 210.00,
     ph: "ph-e",
     img: "img/image5.jpeg",
-    featured: true,
+    featured: false,
     sizes: ["G"]
   },
   {
@@ -60,7 +60,7 @@ const PRODUCTS = [
     price: 250.00,
     ph: "ph-f",
     img: "img/image6.jpeg",
-    featured: true,
+    featured: false,
     sizes: ["P"]
   },
   // {
@@ -90,7 +90,7 @@ const PRODUCTS = [
     price: 255.00,
     ph: "ph-a",
     img: "img/image9.jpeg",
-    featured: false,
+    featured: true,
     sizes: ["P"]
   },
   {
@@ -361,7 +361,7 @@ const PRODUCTS = [
     price: 250.00,
     ph: "ph-c",
     img: "img/image35.jpeg",
-    featured: false,
+    featured: true,
     sizes: ["M"]
   },
   {
@@ -403,7 +403,7 @@ const PRODUCTS = [
     price: 200.00,
     ph: "ph-g",
     img: "img/image39.jpeg",
-    featured: false,
+    featured: true,
     sizes: ["M", "G"]
   },
   {
@@ -447,7 +447,7 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-a",
     img: "img/image43.jpeg",
-    featured: false,
+    featured: true,
     sizes: ["Único"],
     sizeInfo: "Veste do 36 ao 46"
   },
@@ -460,7 +460,8 @@ const PRODUCTS = [
     img: "img/image44.jpeg",
     featured: false,
     sizes: ["Único"],
-    sizeInfo: "Veste do 36 ao 46"
+    sizeInfo: "Veste do 36 ao 46",
+    soldOut: true
   },
   {
     id: 45,
@@ -643,7 +644,7 @@ const PRODUCTS = [
     price: 199.99,
     ph: "ph-g",
     img: "img/image61.jpeg",
-    featured: false,
+    featured: true,
     sizes: ["40"]
   },
   {
@@ -737,6 +738,138 @@ const PRODUCTS = [
     img: "img/image70.jpeg",
     featured: false,
     sizes: ["P"]
+  },
+  {
+    id: 71,
+    name: "Conjunto de Short Marrant",
+    category: "Conjuntos",
+    price: 265.00,
+    ph: "ph-f",
+    img: "img/image71.jpeg",
+    featured: false,
+    sizes: ["42"]
+  },
+  {
+    id: 72,
+    name: "Conjunto de Short Marrant",
+    category: "Conjuntos",
+    price: 265.00,
+    ph: "ph-g",
+    img: "img/image72.jpeg",
+    featured: false,
+    sizes: ["42"]
+  },
+  {
+    id: 73,
+    name: "Conjunto de Short Marrant",
+    category: "Conjuntos",
+    price: 265.00,
+    ph: "ph-f",
+    img: "img/image73.jpeg",
+    featured: false,
+    sizes: ["40"]
+  },
+  {
+    id: 74,
+    name: "Calça paloma",
+    category: "Calças",
+    price: 185.00,
+    ph: "ph-g",
+    img: "img/image74.png",
+    featured: false,
+    sizes: ["40"]
+  },
+  {
+    id: 75,
+    name: "Calça Pietra",
+    category: "Calças",
+    price: 185.00,
+    ph: "ph-f",
+    img: "img/image75.png",
+    featured: false,
+    sizes: ["40"]
+  },
+  {
+    id: 76,
+    name: "Vestido Thalista",
+    category: "Vestidos",
+    price: 185.00,
+    ph: "ph-d",
+    img: "img/image76.jpeg",
+    featured: false,
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42 - Disponível também na cor verde claro com estampa"
+  },
+  {
+    id: 77,
+    name: "Calça Juliana",
+    category: "Calças",
+    price: 186.00,
+    ph: "ph-e",
+    img: "img/image77.jpeg",
+    featured: false,
+    sizes: ["38"]
+  },
+  {
+    id: 78,
+    name: "Calça Jeans Wideleg",
+    category: "Calças",
+    price: 206.00,
+    ph: "ph-f",
+    img: "img/image78.jpeg",
+    featured: false,
+    sizes: ["36", 38]
+  },
+  {
+    id: 79,
+    name: "Short Adelânia",
+    category: "Shorts",
+    price: 165.00,
+    ph: "ph-g",
+    img: "img/image79.jpeg",
+    featured: false,
+    sizes: ["44"]
+  },
+  {
+    id: 80,
+    name: "Short Vasti",
+    category: "Shorts",
+    price: 165.00,
+    ph: "ph-f",
+    img: "img/image80.jpeg",
+    featured: false,
+    sizes: ["44"]
+  },
+  {
+    id: 81,
+    name: "Short Mia",
+    category: "Shorts",
+    price: 145.00,
+    ph: "ph-f",
+    img: "img/image81.jpeg",
+    featured: false,
+    sizes: ["42"]
+  },
+  {
+    id: 82,
+    name: "Short Jeans Claudia",
+    category: "Shorts",
+    price: 165.00,
+    ph: "ph-g",
+    img: "img/image82.jpeg",
+    featured: true,
+    sizes: ["38","42"],
+    sizeInfo: "Disponível na cor azul"
+  },
+  {
+    id: 83,
+    name: "Calça jeans wideleg",
+    category: "Calças",
+    price: 206.00,
+    ph: "ph-f",
+    img: "img/image83.jpeg",
+    featured: false,
+    sizes: ["36","38","42"]
   }
 ];
 
