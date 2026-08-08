@@ -7,7 +7,8 @@ const PRODUCTS = [
     price: 195.00,
     ph: "ph-a",
     img: "img/image1.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const PRODUCTS = [
     price: 235.00,
     ph: "ph-b",
     img: "img/image2.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 3,
@@ -25,7 +27,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-c",
     img: "img/image3.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 4,
@@ -34,7 +37,8 @@ const PRODUCTS = [
     price: 220.00,
     ph: "ph-d",
     img: "img/image4.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 5,
@@ -43,7 +47,8 @@ const PRODUCTS = [
     price: 210.00,
     ph: "ph-e",
     img: "img/image5.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 6,
@@ -52,7 +57,8 @@ const PRODUCTS = [
     price: 250.00,
     ph: "ph-f",
     img: "img/image6.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 7,
@@ -61,7 +67,8 @@ const PRODUCTS = [
     price: 245.00,
     ph: "ph-g",
     img: "img/image7.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 8,
@@ -70,7 +77,8 @@ const PRODUCTS = [
     price: 285.00,
     ph: "ph-h",
     img: "img/image8.jpeg",
-    featured: true
+    featured: true,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 9,
@@ -79,7 +87,8 @@ const PRODUCTS = [
     price: 255.00,
     ph: "ph-a",
     img: "img/image9.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 10,
@@ -88,7 +97,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-b",
     img: "img/image10.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 11,
@@ -97,7 +107,8 @@ const PRODUCTS = [
     price: 206.00,
     ph: "ph-c",
     img: "img/image11.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 12,
@@ -106,7 +117,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-d",
     img: "img/image12.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 13,
@@ -115,7 +127,8 @@ const PRODUCTS = [
     price: 165.00,
     ph: "ph-e",
     img: "img/image13.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 14,
@@ -124,7 +137,8 @@ const PRODUCTS = [
     price: 200.00,
     ph: "ph-f",
     img: "img/image14.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 15,
@@ -133,7 +147,8 @@ const PRODUCTS = [
     price: 190.00,
     ph: "ph-g",
     img: "img/image15.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 16,
@@ -142,7 +157,8 @@ const PRODUCTS = [
     price: 200.00,
     ph: "ph-h",
     img: "img/image16.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 17,
@@ -151,7 +167,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-a",
     img: "img/image17.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 18,
@@ -160,7 +177,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-b",
     img: "img/image18.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 19,
@@ -169,7 +187,8 @@ const PRODUCTS = [
     price: 86.00,
     ph: "ph-c",
     img: "img/image19.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 20,
@@ -178,7 +197,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-d",
     img: "img/image20.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 21,
@@ -187,7 +207,8 @@ const PRODUCTS = [
     price: 120.00,
     ph: "ph-e",
     img: "img/image21.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 22,
@@ -196,7 +217,8 @@ const PRODUCTS = [
     price: 85.00,
     ph: "ph-f",
     img: "img/image22.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 23,
@@ -205,7 +227,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-g",
     img: "img/image23.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 24,
@@ -214,7 +237,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-h",
     img: "img/image24.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 25,
@@ -223,7 +247,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-a",
     img: "img/image25.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 26,
@@ -232,7 +257,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-b",
     img: "img/image26.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 27,
@@ -241,7 +267,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-c",
     img: "img/image27.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 28,
@@ -250,7 +277,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-d",
     img: "img/image28.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 29,
@@ -259,7 +287,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-e",
     img: "img/image29.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 30,
@@ -268,7 +297,8 @@ const PRODUCTS = [
     price: 65.00,
     ph: "ph-f",
     img: "img/image30.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 31,
@@ -277,7 +307,8 @@ const PRODUCTS = [
     price: 110.00,
     ph: "ph-g",
     img: "img/image31.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 32,
@@ -286,7 +317,8 @@ const PRODUCTS = [
     price: 50.00,
     ph: "ph-h",
     img: "img/image32.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 33,
@@ -295,7 +327,8 @@ const PRODUCTS = [
     price: 190.00,
     ph: "ph-a",
     img: "img/image33.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 34,
@@ -304,7 +337,8 @@ const PRODUCTS = [
     price: 190.00,
     ph: "ph-b",
     img: "img/image34.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 35,
@@ -313,7 +347,8 @@ const PRODUCTS = [
     price: 250.00,
     ph: "ph-c",
     img: "img/image35.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 36,
@@ -322,7 +357,8 @@ const PRODUCTS = [
     price: 115.00,
     ph: "ph-d",
     img: "img/image36.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 37,
@@ -331,7 +367,8 @@ const PRODUCTS = [
     price: 206.00,
     ph: "ph-e",
     img: "img/image37.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 38,
@@ -340,7 +377,8 @@ const PRODUCTS = [
     price: 195.00,
     ph: "ph-f",
     img: "img/image38.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 39,
@@ -349,7 +387,8 @@ const PRODUCTS = [
     price: 200.00,
     ph: "ph-g",
     img: "img/image39.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 40,
@@ -358,7 +397,8 @@ const PRODUCTS = [
     price: 205.00,
     ph: "ph-f",
     img: "img/image40.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 41,
@@ -367,7 +407,8 @@ const PRODUCTS = [
     price: 205.00,
     ph: "ph-g",
     img: "img/image41.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 42,
@@ -376,7 +417,8 @@ const PRODUCTS = [
     price: 205.00,
     ph: "ph-h",
     img: "img/image42.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 43,
@@ -385,7 +427,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-a",
     img: "img/image43.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 44,
@@ -394,7 +437,8 @@ const PRODUCTS = [
     price: 205.00,
     ph: "ph-b",
     img: "img/image44.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 45,
@@ -403,7 +447,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-c",
     img: "img/image45.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 46,
@@ -412,7 +457,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-d",
     img: "img/image46.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 47,
@@ -421,7 +467,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-e",
     img: "img/image47.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 48,
@@ -430,7 +477,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-f",
     img: "img/image48.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 49,
@@ -439,7 +487,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-g",
     img: "img/image49.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 50,
@@ -448,7 +497,8 @@ const PRODUCTS = [
     price: 165.00,
     ph: "ph-f",
     img: "img/image50.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 51,
@@ -457,7 +507,8 @@ const PRODUCTS = [
     price: 165.00,
     ph: "ph-g",
     img: "img/image51.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 52,
@@ -466,7 +517,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-h",
     img: "img/image52.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 53,
@@ -475,7 +527,8 @@ const PRODUCTS = [
     price: 185.00,
     ph: "ph-a",
     img: "img/image53.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 54,
@@ -484,7 +537,8 @@ const PRODUCTS = [
     price: 200.00,
     ph: "ph-g",
     img: "img/image54.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 55,
@@ -493,7 +547,8 @@ const PRODUCTS = [
     price: 180.00,
     ph: "ph-h",
     img: "img/image55.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 56,
@@ -502,7 +557,8 @@ const PRODUCTS = [
     price: 180.00,
     ph: "ph-a",
     img: "img/image56.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 57,
@@ -511,7 +567,8 @@ const PRODUCTS = [
     price: 120.00,
     ph: "ph-a",
     img: "img/image57.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 58,
@@ -520,7 +577,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-f",
     img: "img/image58.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 59,
@@ -529,7 +587,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-g",
     img: "img/image59.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 60,
@@ -538,7 +597,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-f",
     img: "img/image60.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 61,
@@ -547,7 +607,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-g",
     img: "img/image61.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 62,
@@ -556,7 +617,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-h",
     img: "img/image62.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 63,
@@ -565,7 +627,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-a",
     img: "img/image63.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 64,
@@ -574,7 +637,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-b",
     img: "img/image64.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 65,
@@ -583,7 +647,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-c",
     img: "img/image65.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 66,
@@ -592,7 +657,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-d",
     img: "img/image66.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 67,
@@ -601,7 +667,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-e",
     img: "img/image67.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 68,
@@ -610,7 +677,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-f",
     img: "img/image68.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 69,
@@ -619,7 +687,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-g",
     img: "img/image69.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   },
   {
     id: 70,
@@ -628,7 +697,8 @@ const PRODUCTS = [
     price: 0.00,
     ph: "ph-f",
     img: "img/image70.jpeg",
-    featured: false
+    featured: false,
+    sizes: ["P", "M", "G"]
   }
 ];
 

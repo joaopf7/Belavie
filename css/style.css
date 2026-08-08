@@ -1018,3 +1018,46 @@ hr.policy-divider { border: none; border-top: 1px solid var(--line); margin: 30p
   border: 1px solid var(--line);
 }
 .detail-favorite-btn:hover { transform: scale(1.08); }
+
+
+/* ---------- Seletor de tamanho ---------- */
+.size-selector { margin-bottom: 26px; }
+.size-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+.size-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.size-btn {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--brown-dark);
+  font-size: 13px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.size-btn:hover { border-color: var(--brown-dark); }
+.size-btn.active {
+  background: var(--brown-dark);
+  border-color: var(--brown-dark);
+  color: var(--white);
+}
+
+.size-warning {
+  display: block;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: #c0392b;
+  text-align: center;
+}

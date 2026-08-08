@@ -48,10 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="product-detail-description">
           ${product.description || "Peça atemporal, escolhida a dedo para compor um guarda-roupa versátil e sofisticado."}
         </p>
-        <button class="btn btn-primary" style="width:100%;"
-          onclick="openWhatsApp('Olá! Tenho interesse na peça: ${product.name} (${formatPrice(product.price)}).')">
+        ${sizeSelectorHTML(product)}
+        <button class="btn btn-primary" style="width:100%;" id="buy-whatsapp-btn">
           Comprar pelo WhatsApp
         </button>
+        <span id="size-warning" class="size-warning"></span>
         <div style="display:flex; gap:12px; margin-top:14px;">
           <a href="catalogo.html" class="btn btn-outline" style="flex:1;">
             ← Voltar
@@ -68,7 +69,52 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLightbox(product);
   setupShareButton(product);
   setupDetailFavorite(product);
+  setupSizeSelector(product);
 });
+
+// -------------------- Seletor de tamanho --------------------
+function sizeSelectorHTML(product) {
+  const sizes = product.sizes && product.sizes.length ? product.sizes : ["Único"];
+  return `
+    <div class="size-selector">
+      <span class="size-label">Tamanho</span>
+      <div class="size-options">
+        ${sizes.map((s, i) => `
+          <button class="size-btn ${i === 0 ? "active" : ""}" data-size="${s}">${s}</button>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function setupSizeSelector(product) {
+  const buttons = document.querySelectorAll(".size-btn");
+  const buyBtn = document.getElementById("buy-whatsapp-btn");
+  const warning = document.getElementById("size-warning");
+  if (!buttons.length || !buyBtn) return;
+
+  let selectedSize = buttons[0]?.dataset.size || "Único";
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedSize = btn.dataset.size;
+      warning.textContent = "";
+    });
+  });
+
+  buyBtn.addEventListener("click", () => {
+    if (!selectedSize) {
+      warning.textContent = "Selecione um tamanho antes de continuar.";
+      return;
+    }
+    const sizeText = selectedSize === "Único" ? "" : ` — Tamanho ${selectedSize}`;
+    openWhatsApp(
+      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(product.price)}).`
+    );
+  });
+}
 
 // -------------------- Favoritar (página de detalhes) --------------------
 function setupDetailFavorite(product) {
