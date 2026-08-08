@@ -1,7 +1,8 @@
 // ==========================================================
 // Belavie — página de detalhes do produto
 // Lê o parâmetro ?id= da URL, busca em PRODUCTS e renderiza.
-// Inclui: lightbox (zoom na imagem) e botão de compartilhar.
+// Inclui: lightbox, compartilhar, favoritar, tamanhos
+// (com esgotado e guia de medidas) e parcelamento.
 // ==========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,12 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <h1>${product.name}</h1>
         <div class="product-detail-price">${formatPrice(product.price)}</div>
+        <div class="installment-info">ou 3x de ${formatPrice(product.price / 3)} sem juros</div>
         <p class="product-detail-description">
           ${product.description || "Peça atemporal, escolhida a dedo para compor um guarda-roupa versátil e sofisticado."}
         </p>
-        ${sizeSelectorHTML(product)}
-        <button class="btn btn-primary" style="width:100%;" id="buy-whatsapp-btn">
-          Comprar pelo WhatsApp
+        ${product.soldOut ? soldOutNoticeHTML() : sizeSelectorHTML(product)}
+        <button class="btn ${product.soldOut ? 'btn-outline' : 'btn-primary'}" style="width:100%;" id="buy-whatsapp-btn">
+          ${product.soldOut ? "Avise-me quando chegar" : "Comprar pelo WhatsApp"}
         </button>
         <span id="size-warning" class="size-warning"></span>
         <div style="display:flex; gap:12px; margin-top:14px;">
@@ -69,63 +71,30 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLightbox(product);
   setupShareButton(product);
   setupDetailFavorite(product);
-  setupSizeSelector(product);
+
+  if (product.soldOut) {
+    setupSoldOutNotify(product);
+  } else {
+    setupSizeSelector(product);
+    setupSizeGuide();
+  }
 });
 
-// -------------------- Seletor de tamanho --------------------
-function sizeSelectorHTML(product) {
-  const sizes = product.sizes && product.sizes.length ? product.sizes : ["Único"];
+// -------------------- Produto totalmente esgotado --------------------
+function soldOutNoticeHTML() {
   return `
-    <div class="size-selector">
-      <span class="size-label">Tamanho</span>
-      <div class="size-options">
-        ${sizes.map((s, i) => `
-          <button class="size-btn ${i === 0 ? "active" : ""}" data-size="${s}">${s}</button>
-        `).join("")}
-      </div>
+    <div class="sold-out-notice">
+      <span class="sold-out-badge sold-out-badge-inline">Esgotado</span>
+      <p>Esta peça está indisponível no momento. Deixe seu contato e avisamos assim que chegar uma nova remessa.</p>
     </div>
   `;
 }
 
-function setupSizeSelector(product) {
-  const buttons = document.querySelectorAll(".size-btn");
-  const buyBtn = document.getElementById("buy-whatsapp-btn");
-  const warning = document.getElementById("size-warning");
-  if (!buttons.length || !buyBtn) return;
-
-  let selectedSize = buttons[0]?.dataset.size || "Único";
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedSize = btn.dataset.size;
-      warning.textContent = "";
-    });
-  });
-
-  buyBtn.addEventListener("click", () => {
-    if (!selectedSize) {
-      warning.textContent = "Selecione um tamanho antes de continuar.";
-      return;
-    }
-    const sizeText = selectedSize === "Único" ? "" : ` — Tamanho ${selectedSize}`;
-    openWhatsApp(
-      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(product.price)}).`
-    );
-  });
-}
-
-// -------------------- Favoritar (página de detalhes) --------------------
-function setupDetailFavorite(product) {
-  const btn = document.getElementById("detail-favorite-btn");
+function setupSoldOutNotify(product) {
+  const btn = document.getElementById("buy-whatsapp-btn");
   if (!btn) return;
-
   btn.addEventListener("click", () => {
-    const nowActive = toggleFavorite(product.id);
-    btn.classList.toggle("active", nowActive);
-    const svg = btn.querySelector("svg");
-    if (svg) svg.setAttribute("fill", nowActive ? "currentColor" : "none");
+    openWhatsApp(`Olá! Gostaria de ser avisado(a) quando a peça "${product.name}" voltar ao estoque.`);
   });
 }
 
@@ -197,5 +166,128 @@ function setupShareButton(product) {
     } catch (err) {
       feedback.textContent = window.location.href;
     }
+  });
+}
+
+// -------------------- Favoritar --------------------
+function setupDetailFavorite(product) {
+  const btn = document.getElementById("detail-favorite-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const nowActive = toggleFavorite(product.id);
+    btn.classList.toggle("active", nowActive);
+    const svg = btn.querySelector("svg");
+    if (svg) svg.setAttribute("fill", nowActive ? "currentColor" : "none");
+  });
+}
+
+// -------------------- Seletor de tamanho --------------------
+function sizeSelectorHTML(product) {
+  const sizes = product.sizes && product.sizes.length ? product.sizes : ["Único"];
+  const soldOut = product.soldOutSizes || [];
+  const isSingleSize = sizes.length === 1 && sizes[0] === "Único";
+
+  const firstAvailableIndex = sizes.findIndex((s) => !soldOut.includes(s));
+
+  return `
+    <div class="size-selector">
+      <div class="size-label-row">
+        <span class="size-label">Tamanho</span>
+        ${!isSingleSize ? '<button class="size-guide-link" id="size-guide-link" type="button">Como escolher meu tamanho?</button>' : ""}
+      </div>
+      <div class="size-options">
+        ${sizes.map((s, i) => {
+          const isSoldOut = soldOut.includes(s);
+          const isActive = i === firstAvailableIndex;
+          return `
+            <button class="size-btn ${isActive ? "active" : ""} ${isSoldOut ? "sold-out" : ""}"
+              data-size="${s}" ${isSoldOut ? "disabled" : ""}>
+              ${s}
+            </button>
+          `;
+        }).join("")}
+      </div>
+      ${product.sizeInfo ? `<p class="size-info-note">${product.sizeInfo}</p>` : ""}
+      ${firstAvailableIndex === -1 ? '<span class="size-warning" style="display:block;margin-top:8px;">Todos os tamanhos estão esgotados no momento.</span>' : ""}
+    </div>
+  `;
+}
+
+function setupSizeSelector(product) {
+  const buttons = document.querySelectorAll(".size-btn:not(.sold-out)");
+  const buyBtn = document.getElementById("buy-whatsapp-btn");
+  const warning = document.getElementById("size-warning");
+  if (!buyBtn) return;
+
+  let selectedSize = buttons[0]?.dataset.size || null;
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".size-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedSize = btn.dataset.size;
+      warning.textContent = "";
+    });
+  });
+
+  buyBtn.addEventListener("click", () => {
+    if (!selectedSize) {
+      warning.textContent = "Todos os tamanhos estão esgotados. Fale conosco para saber sobre reposição.";
+      return;
+    }
+    const sizeText = selectedSize === "Único" ? "" : ` — Tamanho ${selectedSize}`;
+    openWhatsApp(
+      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(product.price)}).`
+    );
+  });
+}
+
+// -------------------- Guia de tamanhos (modal) --------------------
+function setupSizeGuide() {
+  const link = document.getElementById("size-guide-link");
+  if (!link) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox-overlay size-guide-overlay";
+  overlay.innerHTML = `
+    <div class="size-guide-modal">
+      <button class="lightbox-close size-guide-close" aria-label="Fechar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h3>Guia de tamanhos</h3>
+      <p class="size-guide-note">Medidas aproximadas em centímetros. Em caso de dúvida entre dois tamanhos, recomendamos escolher o maior.</p>
+      <table class="size-guide-table">
+        <thead>
+          <tr><th>Tamanho</th><th>Busto</th><th>Cintura</th><th>Quadril</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>P</td><td>82–86</td><td>62–66</td><td>90–94</td></tr>
+          <tr><td>M</td><td>87–91</td><td>67–71</td><td>95–99</td></tr>
+          <tr><td>G</td><td>92–97</td><td>72–77</td><td>100–105</td></tr>
+        </tbody>
+      </table>
+      <button class="btn btn-outline" style="width:100%; margin-top:20px;" onclick="openWhatsApp('Olá! Preciso de ajuda para escolher o tamanho ideal.')">
+        Falar com a equipe
+      </button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const closeBtn = overlay.querySelector(".size-guide-close");
+
+  function open() {
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  link.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
   });
 }

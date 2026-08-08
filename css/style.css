@@ -1061,3 +1061,165 @@ hr.policy-divider { border: none; border-top: 1px solid var(--line); margin: 30p
   color: #c0392b;
   text-align: center;
 }
+
+/* ---------- Parcelamento ---------- */
+.installment-info {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 20px;
+}
+
+/* ---------- Guia de tamanhos ---------- */
+.size-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.size-guide-link {
+  background: none;
+  border: none;
+  color: var(--accent-gold);
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+.size-btn.sold-out {
+  color: var(--text-soft);
+  border-color: var(--line);
+  background: var(--bg-cream-dark);
+  cursor: not-allowed;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.size-btn.sold-out:hover { border-color: var(--line); }
+
+.size-guide-overlay { padding: 20px; }
+.size-guide-modal {
+  background: var(--bg-cream);
+  border-radius: 6px;
+  padding: 36px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.size-guide-modal h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--brown-dark);
+  margin: 0 0 10px;
+}
+.size-guide-note {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 20px;
+}
+.size-guide-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-cream-dark);
+  color: var(--brown-dark);
+  width: 36px;
+  height: 36px;
+}
+.size-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.size-guide-table th, .size-guide-table td {
+  border: 1px solid var(--line);
+  padding: 10px;
+  text-align: center;
+  color: var(--text-main);
+}
+.size-guide-table th {
+  background: var(--bg-cream-dark);
+  color: var(--brown-dark);
+  font-weight: 600;
+}
+
+.map-embed {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ---------- Banner de promoção ---------- */
+.promo-banner {
+  background: var(--brown-dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 20px;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  position: relative;
+}
+.promo-close {
+  background: none;
+  border: none;
+  color: var(--white);
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 13px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.promo-close:hover { opacity: 1; }
+
+@media (max-width: 640px) {
+  .promo-banner { font-size: 12px; padding: 10px 40px 10px 12px; }
+}
+/* ---------- Produto esgotado (flag geral) ---------- */
+.product-card.out-of-stock .product-image img {
+  filter: grayscale(70%);
+  opacity: 0.55;
+}
+.product-card.out-of-stock .product-name,
+.product-card.out-of-stock .product-price {
+  opacity: 0.55;
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(61, 43, 31, 0.92);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.sold-out-notice {
+  background: var(--bg-cream-dark);
+  border: 1px solid var(--line);
+  padding: 20px;
+  margin-bottom: 22px;
+}
+.sold-out-badge-inline {
+  position: static;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.sold-out-notice p {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 14px;
+  line-height: 1.6;
+}

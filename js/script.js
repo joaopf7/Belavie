@@ -10,7 +10,27 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFAQAccordion();
   setupCatalogFilters();
   setupContactForm();
+  setupPromoBanner();
 });
+
+function setupPromoBanner() {
+  const banner = document.getElementById("promo-banner");
+  const closeBtn = document.getElementById("promo-close");
+  if (!banner || !closeBtn) return;
+
+  const bannerId = banner.dataset.bannerId || "default";
+  const dismissedId = localStorage.getItem("belavie_promo_dismissed");
+
+  if (dismissedId === bannerId) {
+    banner.style.display = "none";
+    return;
+  }
+
+  closeBtn.addEventListener("click", () => {
+    banner.style.display = "none";
+    localStorage.setItem("belavie_promo_dismissed", bannerId);
+  });
+}
 
 // Marca o link ativo do menu conforme a página atual
 function markActiveNavLink() {

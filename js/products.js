@@ -8,7 +8,8 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image1.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42"
   },
   {
     id: 2,
@@ -18,7 +19,8 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image2.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42"
   },
   {
     id: 3,
@@ -28,7 +30,7 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image3.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 4,
@@ -38,7 +40,8 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image4.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M", "G"],
+    sizeInfo: "Disponível na cor Marrom (P, M e G) e também na cor Azul (P)"
   },
   {
     id: 5,
@@ -48,7 +51,7 @@ const PRODUCTS = [
     ph: "ph-e",
     img: "img/image5.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["G"]
   },
   {
     id: 6,
@@ -58,18 +61,18 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image6.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
-  {
-    id: 7,
-    name: "Conjunto Short Marrant",
-    category: "Conjuntos",
-    price: 245.00,
-    ph: "ph-g",
-    img: "img/image7.jpeg",
-    featured: true,
-    sizes: ["P", "M", "G"]
-  },
+  // {
+  //   id: 7,
+  //   name: "Conjunto Short Marrant",
+  //   category: "Conjuntos",
+  //   price: 245.00,
+  //   ph: "ph-g",
+  //   img: "img/image7.jpeg",
+  //   featured: true,
+  //   sizes: ["P", "M", "G"]
+  // },
   {
     id: 8,
     name: "Conjunto Calça Marrant",
@@ -78,7 +81,7 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image8.jpeg",
     featured: true,
-    sizes: ["P", "M", "G"]
+    sizes: [ "G"]
   },
   {
     id: 9,
@@ -88,7 +91,7 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image9.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
   {
     id: 10,
@@ -98,7 +101,7 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image10.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 11,
@@ -108,7 +111,7 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image11.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36", "38"]
   },
   {
     id: 12,
@@ -118,18 +121,19 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image12.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: [ "M"],
+    sizeInfo: "Marrom esgotada, Preta tamanho M"
   },
-  {
-    id: 13,
-    name: "Calça Wide Leg Com Cinto",
-    category: "Calças",
-    price: 165.00,
-    ph: "ph-e",
-    img: "img/image13.jpeg",
-    featured: false,
-    sizes: ["P", "M", "G"]
-  },
+  // {
+  //   id: 13,
+  //   name: "Calça Wide Leg Com Cinto",
+  //   category: "Calças",
+  //   price: 165.00,
+  //   ph: "ph-e",
+  //   img: "img/image13.jpeg",
+  //   featured: false,
+  //   sizes: ["P", "M", "G"]
+  // },
   {
     id: 14,
     name: "Vestido Priscila",
@@ -138,7 +142,7 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image14.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"]
   },
   {
     id: 15,
@@ -148,7 +152,8 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image15.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    soldOut:true
   },
   {
     id: 16,
@@ -158,7 +163,7 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image16.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["G"]
   },
   {
     id: 17,
@@ -168,7 +173,7 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image17.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
   {
     id: 18,
@@ -178,7 +183,7 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image18.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
   {
     id: 19,
@@ -188,7 +193,8 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image19.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M", "G"],
+    sizeInfo: "Disponível na cor Azul Claro (P, M), Off-white (G), Creme (P), Café(P)"
   },
   {
     id: 20,
@@ -198,7 +204,7 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image20.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"]
   },
   {
     id: 21,
@@ -208,7 +214,7 @@ const PRODUCTS = [
     ph: "ph-e",
     img: "img/image21.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["GG"]
   },
   {
     id: 22,
@@ -218,7 +224,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image22.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P","M","G"],
+    sizeInfo: "Disponivel também na cor Azul claro (P, G), Salmão (M), Creme (M), Off-white (G)"
   },
   {
     id: 23,
@@ -228,7 +235,7 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image23.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"]
   },
   {
     id: 24,
@@ -238,7 +245,8 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image24.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"],
+    soldOut:true
   },
   {
     id: 25,
@@ -248,7 +256,7 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image25.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
   {
     id: 26,
@@ -258,7 +266,7 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image26.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   },
   {
     id: 27,
@@ -268,7 +276,8 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image27.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"],
+    sizeInfo: "Disponível também na cor Laranja"
   },
   {
     id: 28,
@@ -278,7 +287,8 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image28.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"],
+    soldOut: true
   },
   {
     id: 29,
@@ -288,7 +298,7 @@ const PRODUCTS = [
     ph: "ph-e",
     img: "img/image29.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["G"]
   },
   {
     id: 30,
@@ -298,7 +308,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image30.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"],
+    sizeInfo:"Disponivel também na cor Amarelo Floral"
   },
   {
     id: 31,
@@ -308,7 +319,7 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image31.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["G(42)"]
   },
   {
     id: 32,
@@ -318,7 +329,8 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image32.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M", "G", "GG"],
+    sizeInfo:"Disponível nas cores Off-White(M, G, GG), Azul(G) e Amarelo Manteiga (GG)"
   },
   {
     id: 33,
@@ -328,7 +340,8 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image33.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo:"Veste do 38 ao 42"
   },
   {
     id: 34,
@@ -338,7 +351,8 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image34.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo:"Veste do 38 ao 42"
   },
   {
     id: 35,
@@ -348,7 +362,7 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image35.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M"]
   },
   {
     id: 36,
@@ -358,7 +372,8 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image36.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M", "G"],
+    sizeInfo: "Disponível nas cores Off-white (M e G), Azul (M e G) e Creme(P)"
   },
   {
     id: 37,
@@ -368,7 +383,7 @@ const PRODUCTS = [
     ph: "ph-e",
     img: "img/image37.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M"]
   },
   {
     id: 38,
@@ -378,7 +393,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image38.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42"
   },
   {
     id: 39,
@@ -388,7 +404,7 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image39.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["M", "G"]
   },
   {
     id: 40,
@@ -398,7 +414,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image40.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42"
   },
   {
     id: 41,
@@ -408,7 +425,8 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image41.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 38 ao 42"
   },
   {
     id: 42,
@@ -418,7 +436,9 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image42.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    soldOut: true,
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 43,
@@ -428,7 +448,8 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image43.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 44,
@@ -438,7 +459,8 @@ const PRODUCTS = [
     ph: "ph-b",
     img: "img/image44.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 45,
@@ -448,7 +470,8 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image45.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 46,
@@ -458,7 +481,8 @@ const PRODUCTS = [
     ph: "ph-d",
     img: "img/image46.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 47,
@@ -468,7 +492,8 @@ const PRODUCTS = [
     ph: "ph-e",
     img: "img/image47.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 48,
@@ -478,7 +503,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image48.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 49,
@@ -488,7 +514,9 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image49.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    soldOut: true,
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 50,
@@ -498,7 +526,8 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image50.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 51,
@@ -508,7 +537,8 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image51.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 52,
@@ -518,7 +548,8 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image52.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 53,
@@ -528,7 +559,8 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image53.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 54,
@@ -538,7 +570,8 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image54.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 55,
@@ -548,7 +581,8 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image55.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 56,
@@ -558,7 +592,8 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image56.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 57,
@@ -568,137 +603,140 @@ const PRODUCTS = [
     ph: "ph-a",
     img: "img/image57.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["Único"],
+    sizeInfo: "Veste do 36 ao 46"
   },
   {
     id: 58,
     name: "Calça Jeans Vanessa",
     category: "Calças",
-    price: 0.00,
+    price: 186.00,
     ph: "ph-f",
     img: "img/image58.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 59,
     name: "Calça Jeans Amanda",
     category: "Calças",
-    price: 0.00,
+    price: 186.00,
     ph: "ph-g",
     img: "img/image59.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 60,
-    name: "Calça Jeans Amanda",
+    name: "Calça Jeans Ana",
     category: "Calças",
-    price: 0.00,
+    price: 185.00,
     ph: "ph-f",
     img: "img/image60.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 61,
     name: "Calça Jeans Marilia",
     category: "Calças",
-    price: 0.00,
+    price: 199.99,
     ph: "ph-g",
     img: "img/image61.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["40"]
   },
   {
     id: 62,
     name: "Calça Jeans Hannah",
     category: "Calças",
-    price: 0.00,
+    price: 185.00,
     ph: "ph-h",
     img: "img/image62.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["40"]
   },
   {
     id: 63,
     name: "Calça Bianca",
     category: "Calças",
-    price: 0.00,
+    price: 206.00,
     ph: "ph-a",
     img: "img/image63.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36", "40", "42"]
   },
   {
     id: 64,
     name: "Calça Isabela",
     category: "Calças",
-    price: 0.00,
+    price: 185.00,
     ph: "ph-b",
     img: "img/image64.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["40", "42"]
   },
   {
     id: 65,
     name: "Calça Olivia",
     category: "Calças",
-    price: 0.00,
+    price: 186.00,
     ph: "ph-c",
     img: "img/image65.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["36"]
   },
   {
     id: 66,
     name: "Calça alfaiataria Lilian",
     category: "Calças",
-    price: 0.00,
+    price: 165.00,
     ph: "ph-d",
     img: "img/image66.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M"],
+    sizeInfo: "Tamanho P Marrom e Tamanho M preta"
   },
   {
     id: 67,
     name: "Calça alfaiataria Daniela",
     category: "Calças",
-    price: 0.00,
+    price: 165.00,
     ph: "ph-e",
     img: "img/image67.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P", "M", "G"],
+    sizeInfo: "Tamanho P e G  Azul e Tamanho M preta"
   },
   {
     id: 68,
     name: "Calça alfaiataria Melanie",
     category: "Calças",
-    price: 0.00,
+    price: 165.00,
     ph: "ph-f",
     img: "img/image68.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["G"]
   },
   {
     id: 69,
     name: "Conjunto de Short Aline",
     category: "Conjuntos",
-    price: 0.00,
+    price: 245.00,
     ph: "ph-g",
     img: "img/image69.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["G"]
   },
   {
     id: 70,
     name: "Conjunto de Short Adriana",
     category: "Conjuntos",
-    price: 0.00,
+    price: 245.00,
     ph: "ph-f",
     img: "img/image70.jpeg",
     featured: false,
-    sizes: ["P", "M", "G"]
+    sizes: ["P"]
   }
 ];
 
@@ -708,10 +746,13 @@ function formatPrice(v) {
 
 function productCardHTML(p) {
   const favActive = isFavorite(p.id) ? "active" : "";
+  const outOfStock = p.soldOut ? "out-of-stock" : "";
+
   return `
-    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" onclick="handleCardClick(event, ${p.id})">
+    <div class="product-card ${outOfStock}" data-category="${p.category}" data-name="${p.name.toLowerCase()}" onclick="handleCardClick(event, ${p.id})">
       <div class="product-image">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.soldOut ? '<span class="sold-out-badge">Esgotado</span>' : ""}
         <button class="favorite-btn ${favActive}" aria-label="Favoritar" onclick="toggleFavoriteClick(event, ${p.id})">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="${favActive ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
             <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
@@ -724,7 +765,6 @@ function productCardHTML(p) {
     </div>
   `;
 }
-
 function handleCardClick(event, id) {
   if (event.target.closest(".favorite-btn")) return;
   window.location.href = `produto.html?id=${id}`;
