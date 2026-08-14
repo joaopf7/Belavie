@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <h1>${product.name}</h1>
         <div class="product-detail-price">${formatPrice(product.price)}</div>
-        <div class="installment-info">ou 3x de ${formatPrice(product.price / 3)} sem juros</div>
+        ${paymentMethodsHTML()}
         <p class="product-detail-description">
           ${product.description || "Peça atemporal, escolhida a dedo para compor um guarda-roupa versátil e sofisticado."}
         </p>
@@ -182,6 +182,30 @@ function setupDetailFavorite(product) {
   });
 }
 
+// -------------------- Formas de pagamento --------------------
+function paymentMethodsHTML() {
+  return `
+    <div class="payment-methods">
+      <span class="payment-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Pix
+      </span>
+      <span class="payment-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Crédito
+      </span>
+      <span class="payment-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
+        Débito
+      </span>
+      <span class="payment-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+        Dinheiro
+      </span>
+    </div>
+  `;
+}
+
 // -------------------- Seletor de tamanho --------------------
 function sizeSelectorHTML(product) {
   const sizes = product.sizes && product.sizes.length ? product.sizes : ["Único"];
@@ -208,7 +232,7 @@ function sizeSelectorHTML(product) {
           `;
         }).join("")}
       </div>
-      ${product.sizeInfo ? `<p class="size-info-note">${product.sizeInfo}</p>` : ""}
+      ${isSingleSize && product.sizeInfo ? `<p class="size-info-note">${product.sizeInfo}</p>` : ""}
       ${firstAvailableIndex === -1 ? '<span class="size-warning" style="display:block;margin-top:8px;">Todos os tamanhos estão esgotados no momento.</span>' : ""}
     </div>
   `;
