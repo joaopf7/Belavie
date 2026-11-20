@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </button>
         </div>
         <h1>${product.name}</h1>
-        <div class="product-detail-price">${formatPrice(product.price)}</div>
+        <div class="product-detail-price">${priceHTML(product)}</div>
+${hasDiscount(product) ? `<div class="bf-tag">Esquenta Black Friday · ${BLACK_FRIDAY.discount}% OFF</div>` : ""}
         ${paymentMethodsHTML()}
         <p class="product-detail-description">
           ${product.description || "Peça atemporal, escolhida a dedo para compor um guarda-roupa versátil e sofisticado."}
@@ -146,7 +147,7 @@ function setupShareButton(product) {
   btn.addEventListener("click", async () => {
     const shareData = {
       title: `${product.name} — Belavie`,
-      text: `Olha essa peça da Belavie: ${product.name} por ${formatPrice(product.price)}`,
+      text: `Olha essa peça da Belavie: ${product.name} por ${formatPrice(getFinalPrice(product))}`,
       url: window.location.href
     };
 
@@ -262,7 +263,7 @@ function setupSizeSelector(product) {
     }
     const sizeText = selectedSize === "Único" ? "" : ` — Tamanho ${selectedSize}`;
     openWhatsApp(
-      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(product.price)}).`
+      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(getFinalPrice(product))}) — Esquenta Black Friday.`
     );
   });
 }

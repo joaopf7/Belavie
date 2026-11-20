@@ -15,10 +15,11 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="promo-banner" id="promo-banner" data-banner-id="frete-gratis-399">
-  <span>Na Compra da segunda peça, o acessório saí pela metade do preço — aproveite!</span>
+    <div class="promo-banner" id="promo-banner" data-banner-id="esquenta-black-friday">
+  <span>Esquenta Black Friday: 10% OFF em toda a coleção!</span>
   <button class="promo-close" id="promo-close" aria-label="Fechar aviso">✕</button>
 </div>
+
 
 <header class="site-header">
   <div class="container">
@@ -134,9 +135,9 @@
 
     sendBtn.addEventListener("click", () => {
       const lines = favProducts.map(
-        (p) => `• ${p.name} — ${formatPrice(p.price)}`
+        (p) => `• ${p.name} — ${formatPrice(getFinalPrice(p))}`
       );
-      const total = favProducts.reduce((sum, p) => sum + p.price, 0);
+      const total = favProducts.reduce((sum, p) => sum + getFinalPrice(p), 0);
 
       const message =
         `Olá! Tenho interesse nestas peças da Belavie:\n\n` +

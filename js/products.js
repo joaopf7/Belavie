@@ -1,3 +1,32 @@
+const BLACK_FRIDAY = {
+  active: true,   // mude para false para encerrar a promoção
+  discount: 10    // porcentagem de desconto
+};
+
+// Preço final (produtos esgotados não recebem desconto)
+function getFinalPrice(p) {
+  if (!BLACK_FRIDAY.active || p.soldOut) return p.price;
+  return Math.round(p.price * (1 - BLACK_FRIDAY.discount / 100) * 100) / 100;
+}
+
+function hasDiscount(p) {
+  return BLACK_FRIDAY.active && !p.soldOut;
+}
+
+function formatPriceHTML(v) {
+  const n = v.toFixed(2).replace(".", ",");
+  return `<small class="currency">R$</small> ${n}`;
+}
+
+function priceHTML(p) {
+  if (!hasDiscount(p)) return formatPriceHTML(p.price);
+  return `
+    <span class="price-old">${formatPriceHTML(p.price)}</span>
+    <span class="price-new">${formatPriceHTML(getFinalPrice(p))}</span>
+  `;
+}
+
+
 // Catálogo de produtos — Belavie
 const PRODUCTS = [
   {
@@ -341,7 +370,8 @@ const PRODUCTS = [
     img: "img/image33.jpeg",
     featured: false,
     sizes: ["Único"],
-    sizeInfo:"Veste do 38 ao 42"
+    sizeInfo:"Veste do 38 ao 42",
+    soldOut: true
   },
   {
     id: 34,
@@ -886,15 +916,17 @@ function productCardHTML(p) {
       <div class="product-image">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
         ${p.soldOut ? '<span class="sold-out-badge">Esgotado</span>' : ""}
-        <button class="favorite-btn ${favActive}" aria-label="Favoritar" onclick="toggleFavoriteClick(event, ${p.id})">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="${favActive ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
-            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
-          </svg>
-        </button>
+        ${hasDiscount(p) ? `
+  <span class="discount-badge">-${BLACK_FRIDAY.discount}%</span>
+  <span class="discount-ribbon">
+    <span class="discount-ribbon-title">Esquenta Black Friday</span>
+    <span class="discount-ribbon-value">${BLACK_FRIDAY.discount}% OFF</span>
+  </span>` : ""}
+        <!-- ...botão de favorito continua igual... -->
       </div>
       <div class="product-cat">${p.category}</div>
       <div class="product-name">${p.name}</div>
-      <div class="product-price">${formatPrice(p.price)}</div>
+      <div class="product-price">${priceHTML(p)}</div>   <!-- era formatPrice(p.price) -->
     </div>
   `;
 }
