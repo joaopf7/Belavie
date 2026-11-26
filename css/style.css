@@ -1324,3 +1324,233 @@ hr.policy-divider { border: none; border-top: 1px solid var(--line); margin: 30p
   .instagram-box h3 { margin: 0 0 10px; }
   .instagram-box p { margin: 0 auto 22px; }
 }
+/* ================= Esquenta Black Friday ================= */
+
+/* "R$" menor */
+.currency {
+  font-size: 0.65em;
+  font-weight: 500;
+  margin-right: 1px;
+}
+
+/* Selo no canto da foto */
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d6202b;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 10px;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+/* Faixa na base da foto */
+.discount-ribbon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #d6202b;
+  color: #fff;
+  text-align: center;
+  padding: 10px 6px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+}
+.discount-ribbon-title {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.discount-ribbon-value {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Preço com desconto: um abaixo do outro */
+.product-price .price-old,
+.product-price .price-new,
+.product-detail-price .price-old,
+.product-detail-price .price-new {
+  display: block;
+}
+.product-price .price-old,
+.product-detail-price .price-old {
+  color: #8a8378;
+  text-decoration: line-through;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0 0 2px;
+}
+.product-price .price-new,
+.product-detail-price .price-new {
+  color: #d6202b;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.product-detail-price .price-old {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.product-detail-price .price-new {
+  font-size: 32px;
+}
+
+/* Etiqueta na página de detalhe */
+.bf-tag {
+  display: inline-block;
+  background: #d6202b;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 2px;
+  margin: 4px 0 18px;
+}
+
+/* Faixa de recursos com 2 itens */
+.feature-strip .container {
+  justify-content: space-around;
+}
+
+/* ---------- Banner da home ---------- */
+.bf-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 400px;
+  background: #eeebe6;
+}
+
+.bf-hero-photo {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: #3d2b1f;
+}
+.bf-hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(100%);
+}
+.bf-hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bf-hero-title {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 30px 20px;
+}
+.bf-small {
+  font-size: 22px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.bf-big {
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+.bf-red { color: #e0182d; }
+
+.bf-hero-offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  color: #1a1a1a;
+}
+.bf-offer-top {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.bf-offer-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #d6202b;
+  font-weight: 800;
+  line-height: 0.9;
+  margin: 8px 0 16px;
+}
+.bf-offer-number {
+  font-size: clamp(90px, 12vw, 160px);
+  letter-spacing: -4px;
+}
+.bf-offer-off {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0.85;
+}
+.bf-offer-percent { font-size: clamp(44px, 6vw, 80px); }
+.bf-offer-word { font-size: clamp(28px, 4vw, 52px); }
+
+.bf-offer-note {
+  border: 1px solid #d6202b;
+  color: #d6202b;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 22px;
+}
+.bf-offer-fine {
+  font-size: 11px;
+  color: #6b655c;
+  margin: 12px 0 18px;
+}
+.bf-hero-btn {
+  background: #111;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 44px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+.bf-hero-btn:hover { background: #3d2b1f; }
+
+/* Celular */
+@media (max-width: 900px) {
+  .bf-hero { grid-template-columns: 1fr; }
+  .bf-hero-photo { min-height: 280px; }
+}
+@media (max-width: 640px) {
+  .bf-small { font-size: 16px; letter-spacing: 6px; }
+  .bf-offer-top { font-size: 20px; }
+  .discount-ribbon-value { font-size: 15px; }
+  .discount-ribbon-title { font-size: 9px; letter-spacing: 1.5px; }
+}

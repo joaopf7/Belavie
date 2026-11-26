@@ -1,0 +1,89 @@
+/* Super Black Friday — catálogo compacto e sacola */
+.bag-link{font-size:12px;white-space:nowrap;display:flex;gap:5px;align-items:center}.bag-link span{background:var(--brown-dark);color:white;border-radius:50%;min-width:20px;text-align:center}
+.campaign-head{padding-top:30px;padding-bottom:20px;text-align:center}.campaign-head .eyebrow{margin-bottom:4px}.campaign-head h1{font-family:var(--font-display);font-size:38px;line-height:1.1;margin:8px 0}.campaign-head p{margin:8px 0}.campaign-link,.bag-next{display:inline-block;color:var(--brown-dark);text-decoration:underline;text-underline-offset:4px;margin:8px 0}.campaign-rules{font-size:13px;margin:8px 0}.campaign-rules summary{cursor:pointer;text-decoration:underline}.campaign-rules p{max-width:720px;margin:10px auto}.catalog-page .search-box{margin:0 0 12px}.catalog-page .filter-row{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:8px;padding-bottom:8px;margin-bottom:10px}.catalog-page .filter-btn{flex-shrink:0;padding:9px 13px}.catalog-tools{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:13px}.catalog-tools select,.catalog-page .sort-row select{background:transparent;border:1px solid var(--line);padding:8px;font:inherit}.catalog-page .sort-row{margin:8px 0}.catalog-page .result-count{margin:8px 0}.product-grid{scroll-margin-top:100px}.product-name{display:block}.product-image>a{display:block;width:100%;height:100%}.product-image>a img{width:100%;height:100%;object-fit:cover}.card-sizes{font-size:12px;margin:5px 0;color:var(--text-main)}.card-offer{font-size:11px;margin:4px 0;color:var(--brown-dark)}.purchase-help{font-size:13px;line-height:1.6}.purchase-help a{text-decoration:underline}.color-label{display:block;font-size:13px;margin-top:16px}.color-input{width:100%;padding:12px;border:1px solid var(--line);background:transparent;font:inherit}.size-info-note{display:block!important}.bag-next{display:block;text-align:center}.size-warning{display:block}.bf-offer-note{max-width:400px}.bf-offer-fine{max-width:420px}.bag-page{padding-top:30px;padding-bottom:60px}.bag-page>h1{font:46px var(--font-display);margin:10px 0}.bag-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:35px;margin-top:25px}.bag-item{display:grid;grid-template-columns:90px 1fr auto;gap:15px;border-bottom:1px solid var(--line);padding:20px 0}.bag-item img{width:90px;height:120px;object-fit:cover}.bag-item h2{font-size:17px;margin:0}.bag-item p{font-size:13px;margin:5px 0;overflow-wrap:anywhere}.bag-item input{width:58px;padding:6px;border:1px solid var(--line);font:inherit;background:transparent}.remove-item{border:0;background:transparent;text-decoration:underline;cursor:pointer;color:var(--text-main);margin-left:10px}.bag-summary{background:var(--bg-cream-dark);padding:24px;align-self:start}.bag-summary h2{font:30px var(--font-display);margin-top:0}.bag-summary p{font-size:14px}.bag-summary>p>strong{float:right}.bag-summary .btn{width:100%;letter-spacing:1px;padding:14px;font-size:12px}.bag-total{border-top:1px solid var(--line);padding-top:14px}.saving{color:#346240}.bag-progress{padding:12px;background:var(--bg-cream);border-left:3px solid var(--accent-gold)}.empty-state{grid-column:1/-1;padding:35px 0;text-align:center}button:disabled{opacity:.5;cursor:not-allowed}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent-gold);outline-offset:4px}
+@media(max-width:768px){.header-icons{gap:12px}.site-header .container{height:66px}.logo{font-size:34px}.campaign-head{padding-top:16px;padding-bottom:12px}.campaign-head h1{font-size:28px}.campaign-head p{font-size:13px}.campaign-head .eyebrow{font-size:10px;letter-spacing:2px}.campaign-rules{font-size:12px}.catalog-page .filter-btn{padding:7px 11px;font-size:10px}.catalog-tools{gap:12px;font-size:12px}.catalog-page .sort-row{font-size:12px}.catalog-page .search-box input{padding:8px 0}.whatsapp-float{bottom:16px;right:12px;width:44px;height:44px}.bag-layout{grid-template-columns:1fr;gap:20px}.bag-item{grid-template-columns:65px 1fr;gap:12px}.bag-item img{width:65px;height:90px}.bag-item>strong{grid-column:2}.bag-summary{padding:20px}.bag-page>h1{font-size:36px}.bf-hero-offer{padding:25px 18px}.bf-offer-note{font-size:18px}.product-detail-info .btn{padding:14px 18px}.product-card .product-name{font-size:15px}.card-offer{font-size:10px}.catalog-page .container{padding-left:16px;padding-right:16px}}
+
+
+/* Foto editorial e identificação da campanha nos cards. */
+.catalog-black-banner { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); background:#261d18; color:#fff9ee; text-align:left; overflow:hidden; border:1px solid #594330; }
+.catalog-black-photo { position:relative; min-height:290px; overflow:hidden; }
+.catalog-black-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.catalog-black-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent 50%,rgba(38,29,24,.65)); pointer-events:none; }
+.catalog-black-copy { align-self:center; padding:28px 34px; min-width:0; }
+.catalog-black-copy .eyebrow { color:#e7c595; text-align:left; font-size:10px; letter-spacing:3px; }
+.campaign-head .catalog-black-copy h1 { font-family:var(--font-display); font-size:clamp(34px,4.8vw,60px); color:#fff9ee; line-height:1; margin:10px 0 14px; }
+.catalog-black-copy h1>span { display:block; font:500 13px var(--font-body); letter-spacing:5px; text-transform:uppercase; color:#e7c595; margin-bottom:7px; }
+.campaign-head .catalog-black-offer { max-width:390px; font-size:17px; line-height:1.5; }
+.catalog-black-offer strong { color:#f0ce99; white-space:nowrap; }
+.catalog-black-copy .campaign-link { display:inline-flex; align-items:center; gap:25px; background:#efd8b3; color:#261d18; padding:11px 19px; text-decoration:none; font-size:12px; font-weight:600; letter-spacing:1px; margin:14px 0 5px; }
+.catalog-black-copy .campaign-link:hover { background:#fff1db; }
+.catalog-black-copy .campaign-rules { color:#e9ddcd; font-size:11px; }
+.catalog-black-copy .campaign-rules p { font-size:12px; line-height:1.5; margin:10px 0 0; }
+.super-black-ribbon { position:absolute; top:12px; left:0; z-index:2; pointer-events:none; display:inline-flex; gap:4px; align-items:center; padding:8px 17px 8px 10px; background:#261d18; color:#fff9ee; border-bottom:2px solid #d9b178; font:600 10px var(--font-body); letter-spacing:1px; line-height:1.2; clip-path:polygon(0 0,100% 0,calc(100% - 7px) 50%,100% 100%,0 100%); }
+.super-black-ribbon>span { color:#edc992; }
+@media(max-width:768px) {
+ .catalog-black-banner { grid-template-columns:minmax(0,.65fr) minmax(0,1fr); }
+ .catalog-black-photo { min-height:235px; }
+ .catalog-black-photo img { object-position:49% 20%; }
+ .catalog-black-copy { padding:18px 14px; }
+ .campaign-head .catalog-black-copy .eyebrow { font-size:8px; letter-spacing:1.5px; }
+ .campaign-head .catalog-black-copy h1 { font-size:32px; margin:8px 0 10px; }
+ .catalog-black-copy h1>span { font-size:10px; letter-spacing:3px; }
+ .campaign-head .catalog-black-offer { font-size:12px; line-height:1.5; }
+ .catalog-black-copy .campaign-link { padding:9px 11px; font-size:10px; gap:12px; letter-spacing:.4px; margin-top:10px; }
+ .catalog-black-copy .campaign-rules { font-size:10px; margin:6px 0 0; }
+ .super-black-ribbon { top:9px; font-size:8px; letter-spacing:.5px; padding:7px 13px 7px 8px; gap:3px; }
+}
+@media(max-width:359px) { .campaign-head .catalog-black-copy h1 { font-size:27px; } .catalog-black-copy { padding:15px 10px; } }
+
+/* Oferta individual e comparação transparente na sacola. */
+.single-offer-label{display:inline-block;font:600 10px var(--font-body);letter-spacing:.7px;color:#355b3c;background:#eaf0e5;padding:3px 7px;margin-top:5px}
+.catalog-black-copy .offer-disclaimer{font-size:11px;line-height:1.5;color:#e7c595;margin:8px 0}
+.offer-comparison{font-size:13px;margin:14px 0}.offer-comparison summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}.offer-comparison p{margin:8px 0}.bag-progress p{margin:7px 0 0}.product-price .price-old,.product-detail-price .price-old{text-decoration:line-through}.product-price .price-old small,.product-detail-price .price-old small{font-size:inherit}
+@media(max-width:768px){.catalog-black-copy .offer-disclaimer{font-size:10px}.catalog-black-copy{padding-top:14px;padding-bottom:14px}.product-card .card-offer{line-height:1.5}}
+
+
+/* Carrossel editorial: as condições ao lado continuam fixas. */
+.black-promo-carousel{position:relative!important;display:block!important;overflow:hidden;background:#261d18;min-width:0;isolation:isolate;min-height:440px}
+.black-promo-carousel::after{display:none!important}
+.black-slides,.black-slide{position:absolute;inset:0}
+.black-slide{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .7s ease,visibility .7s ease}
+.black-slide.is-current{opacity:1;visibility:visible;pointer-events:auto}
+.black-promo-carousel .black-slide>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:none}
+.black-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,17,12,.03) 15%,rgba(24,17,12,.55) 47%,rgba(24,17,12,.97) 100%);pointer-events:none}
+.black-slide-copy{position:absolute;bottom:57px;left:24px;right:24px;z-index:1;color:#fff9ee;text-align:left}
+.black-slide-kicker{font:500 10px var(--font-body);letter-spacing:2px;color:#f0ce99}
+.black-slide-copy h2{font:600 clamp(34px,4.8vw,60px) var(--font-display);line-height:1;margin:8px 0;color:#fff9ee}
+.black-slide-copy .black-slide-offer{font-size:16px;line-height:1.35;margin:5px 0 10px;max-width:320px}
+.black-slide-copy a{display:inline-block;color:#f5d7a7;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.black-slide-copy .black-slide-price{font-size:14px;margin:8px 0}
+.black-slide-price s{font-size:11px;color:#dfd1c1;margin-right:7px}
+.black-slide-copy small{display:block;font-size:10px;line-height:1.4;margin-top:8px}
+.black-carousel-controls{position:absolute;z-index:3;bottom:10px;left:16px;right:16px;display:flex;align-items:center;justify-content:center;gap:5px}
+.black-carousel-controls>button{width:34px;height:34px;border:1px solid #ac8a60;border-radius:50%;color:#fff9ee;background:#261d18;cursor:pointer;font:20px var(--font-body);padding:0}
+.black-carousel-controls [data-black-pause]{font-size:13px;margin-left:7px}
+.black-carousel-dots{display:flex;align-items:center;gap:0}
+.black-carousel-dots button{position:relative;width:22px;height:32px;border:0;background:transparent;cursor:pointer;padding:0}
+.black-carousel-dots button::after{content:"";position:absolute;width:6px;height:6px;top:13px;left:8px;border-radius:50%;background:#978573}
+.black-carousel-dots button[aria-current="true"]::after{background:#f0ce99;box-shadow:0 0 0 2px #f0ce9933}
+.catalog-black-banner .black-promo-carousel{min-height:370px}
+.catalog-black-banner .black-slide-copy h2{font-size:44px}
+@media(max-width:768px){
+ .bf-hero .black-promo-carousel{min-height:365px}
+ .catalog-black-banner .black-promo-carousel{min-height:330px}
+ .black-slide-copy{left:16px;right:16px;bottom:55px}
+ .catalog-black-banner .black-slide-copy{left:10px;right:10px}
+ .catalog-black-banner .black-slide-copy h2{font-size:29px}
+ .catalog-black-banner .black-slide-kicker{font-size:8px;letter-spacing:.8px}
+ .catalog-black-banner .black-slide-offer{font-size:12px}
+ .catalog-black-banner .black-slide-copy a{font-size:11px}
+ .catalog-black-banner .black-slide-copy small{font-size:9px}
+ .catalog-black-banner .black-slide-price{font-size:12px}
+ .catalog-black-banner .black-slide-price s{display:block;font-size:10px}
+ .catalog-black-banner .black-carousel-controls{left:3px;right:3px;gap:1px;flex-wrap:wrap}
+ .catalog-black-banner .black-carousel-controls>button{width:24px;height:28px;font-size:17px}
+ .catalog-black-banner .black-carousel-controls [data-black-pause]{font-size:10px;margin-left:0}
+ .catalog-black-banner .black-carousel-dots button{width:13px}
+ .catalog-black-banner .black-carousel-dots button::after{left:4px;width:5px;height:5px}
+}
+@media(prefers-reduced-motion:reduce){.black-slide{transition:none}}
