@@ -1,32 +1,12 @@
-const BLACK_FRIDAY = {
-  active: true,   // mude para false para encerrar a promoção
-  discount: 10    // porcentagem de desconto
-};
-
-// Preço final (produtos esgotados não recebem desconto)
-function getFinalPrice(p) {
-  if (!BLACK_FRIDAY.active || p.soldOut) return p.price;
-  return Math.round(p.price * (1 - BLACK_FRIDAY.discount / 100) * 100) / 100;
-}
-
-function hasDiscount(p) {
-  return BLACK_FRIDAY.active && !p.soldOut;
-}
-
-function formatPriceHTML(v) {
-  const n = v.toFixed(2).replace(".", ",");
-  return `<small class="currency">R$</small> ${n}`;
-}
-
-function priceHTML(p) {
-  if (!hasDiscount(p)) return formatPriceHTML(p.price);
-  return `
-    <span class="price-old">${formatPriceHTML(p.price)}</span>
-    <span class="price-new">${formatPriceHTML(getFinalPrice(p))}</span>
-  `;
-}
-
-
+const BLACK_FRIDAY = { active: true, discount: 40, singleDiscount: 10 };
+const CAMPAIGN_TITLE = 'Super Black Friday Belavie';
+const CAMPAIGN_OFFER = '10% OFF nas peças disponíveis ou 40% OFF na de menor valor a cada 2 peças. Aplicamos a melhor oferta, sem acumular.';
+const CAMPAIGN_RULES = 'Comparamos 10% OFF em todas as peças disponíveis do pedido com 40% OFF nas peças de menor valor, a cada 2 unidades. Com 4 peças, a segunda oferta desconta as 2 de menor valor; com 3, apenas a de menor valor. Ambas são calculadas sobre os preços regulares. Aplicamos uma única oferta ao pedido: a que resultar no menor total. Não cumulativas com outras promoções. Estoque confirmado no atendimento.';
+function getFinalPrice(p) { const cents = Math.round(p.price * 100); return hasDiscount(p) ? Math.max(0, Math.round(cents * (100 - BLACK_FRIDAY.singleDiscount) / 100) - 1) / 100 : p.price; }
+function hasDiscount(p) { return BLACK_FRIDAY.active && !p.soldOut; }
+function formatPriceHTML(v) { return '<small class="currency">R$</small> ' + v.toFixed(2).replace('.', ','); }
+function priceHTML(p) { return hasDiscount(p) ? `<span class="price-old">De ${formatPriceHTML(p.price)}</span><span class="price-new">Por ${formatPriceHTML(getFinalPrice(p))}</span><span class="single-offer-label">${BLACK_FRIDAY.singleDiscount}% OFF</span>` : formatPriceHTML(p.price); }
+function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 // Catálogo de produtos — Belavie
 const PRODUCTS = [
   {
@@ -125,7 +105,7 @@ const PRODUCTS = [
   {
     id: 10,
     name: "Calça Jeans Slim",
-    category: "calças",
+    category: "Calças",
     price: 185.00,
     ph: "ph-b",
     img: "img/image10.jpeg",
@@ -685,7 +665,8 @@ const PRODUCTS = [
     ph: "ph-h",
     img: "img/image62.jpeg",
     featured: false,
-    sizes: ["40"]
+    sizes: ["40"],
+    soldOut: true
   },
   {
     id: 63,
@@ -715,7 +696,8 @@ const PRODUCTS = [
     ph: "ph-c",
     img: "img/image65.jpeg",
     featured: false,
-    sizes: ["36"]
+    sizes: ["36"],
+    soldOut: true
   },
   {
     id: 66,
@@ -848,7 +830,7 @@ const PRODUCTS = [
     ph: "ph-f",
     img: "img/image78.jpeg",
     featured: false,
-    sizes: ["36", 38]
+    sizes: ["36", "38"]
   },
   {
     id: 79,
@@ -858,7 +840,8 @@ const PRODUCTS = [
     ph: "ph-g",
     img: "img/image79.jpeg",
     featured: false,
-    sizes: ["44"]
+    sizes: ["44"],
+    soldOut: true
   },
   {
     id: 80,
@@ -907,30 +890,34 @@ function formatPrice(v) {
   return "R$ " + v.toFixed(2).replace(".", ",");
 }
 
-function productCardHTML(p) {
-  const favActive = isFavorite(p.id) ? "active" : "";
-  const outOfStock = p.soldOut ? "out-of-stock" : "";
 
-  return `
-    <div class="product-card ${outOfStock}" data-category="${p.category}" data-name="${p.name.toLowerCase()}" onclick="handleCardClick(event, ${p.id})">
-      <div class="product-image">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        ${p.soldOut ? '<span class="sold-out-badge">Esgotado</span>' : ""}
-        ${hasDiscount(p) ? `
-  <span class="discount-badge">-${BLACK_FRIDAY.discount}%</span>
-  <span class="discount-ribbon">
-    <span class="discount-ribbon-title">Esquenta Black Friday</span>
-    <span class="discount-ribbon-value">${BLACK_FRIDAY.discount}% OFF</span>
-  </span>` : ""}
-        <!-- ...botão de favorito continua igual... -->
-      </div>
-      <div class="product-cat">${p.category}</div>
-      <div class="product-name">${p.name}</div>
-      <div class="product-price">${priceHTML(p)}</div>   <!-- era formatPrice(p.price) -->
+function productCardHTML(p) {
+  const active = isFavorite(p.id);
+  return `<article class="product-card ${p.soldOut ? 'out-of-stock' : ''}">
+    <div class="product-image">
+      <a href="produto.html?id=${p.id}" aria-label="Ver ${escapeHTML(p.name)}"><img src="${p.img}" alt="${escapeHTML(p.name)}" loading="lazy"></a>
+      ${p.soldOut ? '<span class="sold-out-badge">Esgotado</span>' : ''}
+      ${BLACK_FRIDAY.active && !p.soldOut ? '<span class="super-black-ribbon"><span>SUPER</span> BLACK</span>' : ''}
+      <button class="favorite-btn ${active ? 'active' : ''}" aria-label="Favoritar ${escapeHTML(p.name)}" aria-pressed="${active}" onclick="toggleFavoriteClick(event, ${p.id});this.setAttribute('aria-pressed',isFavorite(${p.id}))"><svg width="20" height="20" viewBox="0 0 24 24" fill="${active ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
     </div>
-  `;
+    <div class="product-cat">${p.category}</div>
+    <a class="product-name" href="produto.html?id=${p.id}">${escapeHTML(p.name)}</a>
+    <div class="product-price">${priceHTML(p)}</div>
+    <p class="card-sizes">${(p.sizes || []).join(' · ')}</p>
+    ${BLACK_FRIDAY.active && !p.soldOut ? '<p class="card-offer">Comprando 2, você pode economizar mais: 40% OFF na de menor valor.</p>' : ''}
+  </article>`;
 }
-function handleCardClick(event, id) {
-  if (event.target.closest(".favorite-btn")) return;
-  window.location.href = `produto.html?id=${id}`;
-}
+
+// Cores/tamanhos transcritos das observações existentes do catálogo.
+const PRODUCT_VARIANTS = {
+  4: {'Marrom':['P','M','G'],'Azul':['P']},
+  12: {'Preta':['M']},
+  19: {'Azul Claro':['P','M'],'Off-white':['G'],'Creme':['P'],'Café':['P']},
+  22: {'Azul claro':['P','G'],'Salmão':['M'],'Creme':['M'],'Off-white':['G']},
+  32: {'Off-white':['M','G','GG'],'Azul':['G'],'Amarelo Manteiga':['GG']},
+  36: {'Off-white':['M','G'],'Azul':['M','G'],'Creme':['P']},
+  66: {'Marrom':['P'],'Preta':['M']},
+  67: {'Azul':['P','G'],'Preta':['M']},
+  82: {'Azul':['38','42']}
+};
+function validVariant(id,size,color) { return !PRODUCT_VARIANTS[id] || (PRODUCT_VARIANTS[id][color] || []).includes(size); }

@@ -18,6 +18,8 @@ function setupPromoBanner() {
   const closeBtn = document.getElementById("promo-close");
   if (!banner || !closeBtn) return;
 
+  if (!BLACK_FRIDAY.active) { banner.hidden=true; banner.style.display='none'; return; }
+  banner.querySelector('span').textContent = CAMPAIGN_TITLE + ' · ' + CAMPAIGN_OFFER;
   const bannerId = banner.dataset.bannerId || "default";
   const dismissedId = localStorage.getItem("belavie_promo_dismissed");
 
@@ -69,52 +71,22 @@ function setupFAQAccordion() {
 
 // Filtro por categoria + busca por texto no catálogo
 function setupCatalogFilters() {
-  const grid = document.querySelector("#product-grid");
-  if (!grid) return;
-
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const searchInput = document.querySelector("#search-input");
-  const sortSelect = document.querySelector("#sort-select");
-  const resultCount = document.querySelector("#result-count");
-  let activeCategory = "Todos";
-
-  function render() {
-    const term = (searchInput?.value || "").toLowerCase().trim();
-    let filtered = PRODUCTS.filter((p) => {
-      const matchesCategory = activeCategory === "Todos" || p.category === activeCategory;
-      const matchesTerm = p.name.toLowerCase().includes(term);
-      return matchesCategory && matchesTerm;
-    });
-
-    // aplica a ordenação escolhida
-    const sortValue = sortSelect?.value || "relevance";
-    if (sortValue === "price-asc") {
-      filtered = filtered.sort((a, b) => a.price - b.price);
-    } else if (sortValue === "price-desc") {
-      filtered = filtered.sort((a, b) => b.price - a.price);
-    } else if (sortValue === "newest") {
-      filtered = filtered.sort((a, b) => b.id - a.id); // maior id = adicionado mais recente
-    }
-
-    grid.innerHTML = filtered.map(productCardHTML).join("");
-    if (resultCount) {
-      resultCount.textContent = `${filtered.length} PEÇA${filtered.length === 1 ? "" : "S"}`;
-    }
-  }
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeCategory = btn.dataset.category;
-      render();
-    });
-  });
-
-  if (searchInput) searchInput.addEventListener("input", render);
-  if (sortSelect) sortSelect.addEventListener("change", render);
-
-  render();
+ const grid=document.querySelector('#product-grid'); if(!grid)return;
+ const buttons=[...document.querySelectorAll('.filter-btn')], search=document.querySelector('#search-input'), sort=document.querySelector('#sort-select'), size=document.querySelector('#size-filter'), available=document.querySelector('#available-filter');
+ let category=new URLSearchParams(location.search).get('cat') || 'Todos';
+ if(!buttons.some(b=>b.dataset.category===category))category='Todos';
+ const normalize=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ [...new Set(PRODUCTS.flatMap(p=>p.sizes || []).map(String))].sort((a,b)=>a.localeCompare(b,'pt-BR',{numeric:true})).forEach(s=>size.add(new Option(s,s)));
+ function render(){
+  const term=normalize(search.value.trim());
+  let items=PRODUCTS.filter(p=>(category==='Todos'||p.category===category)&&normalize(p.name).includes(term)&&(!available.checked||!p.soldOut)&&(!size.value||(!p.soldOut&&(p.sizes||[]).map(String).includes(size.value)&&!(p.soldOutSizes||[]).map(String).includes(size.value))));
+  items.sort((a,b)=>Number(!!a.soldOut)-Number(!!b.soldOut)||(sort.value==='price-asc'?getFinalPrice(a)-getFinalPrice(b):sort.value==='price-desc'?getFinalPrice(b)-getFinalPrice(a):sort.value==='newest'?b.id-a.id:Number(!!b.featured)-Number(!!a.featured)));
+  grid.innerHTML=items.length?items.map(productCardHTML).join(''):'<p class="empty-state">Nenhuma peça encontrada. Experimente outro tamanho ou categoria.</p>';
+  document.querySelector('#result-count').textContent=items.length+' PEÇA'+(items.length===1?'':'S');
+  buttons.forEach(b=>{b.classList.toggle('active',b.dataset.category===category);b.setAttribute('aria-pressed',b.dataset.category===category);});
+ }
+ buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;render();}));
+ search.addEventListener('input',render);[sort,size,available].forEach(el=>el.addEventListener('change',render));render();
 }
 
 // Envia o conteúdo do formulário de contato via WhatsApp
@@ -128,7 +100,7 @@ function setupContactForm() {
     const email = form.querySelector("#email")?.value.trim();
     const message = form.querySelector("#message")?.value.trim();
 
-    const text = `Olá! Meu nome é ${name} (${email}).%0A%0A${encodeURIComponent(message)}`;
+    const text = encodeURIComponent(`Olá! Meu nome é ${name} (${email}).\n\n${message}`);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
     window.open(url, "_blank");
   });

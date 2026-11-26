@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <h1>${product.name}</h1>
         <div class="product-detail-price">${priceHTML(product)}</div>
-${hasDiscount(product) ? `<div class="bf-tag">Esquenta Black Friday · ${BLACK_FRIDAY.discount}% OFF</div>` : ""}
-        ${paymentMethodsHTML()}
+${BLACK_FRIDAY.active && !product.soldOut ? `<div class="bf-tag">${CAMPAIGN_OFFER}</div><details class="campaign-rules"><summary>Regras da Super Black</summary><p>${CAMPAIGN_RULES}</p></details>` : ""}
+        ${paymentMethodsHTML()}<p class="purchase-help">Crédito em até 3x sem juros. Entrega: consulte frete e prazo pelo WhatsApp antes de confirmar. <a href="trocas.html">Trocas e devoluções</a>.</p>
         <p class="product-detail-description">
           ${product.description || "Peça atemporal, escolhida a dedo para compor um guarda-roupa versátil e sofisticado."}
         </p>
         ${product.soldOut ? soldOutNoticeHTML() : sizeSelectorHTML(product)}
         <button class="btn ${product.soldOut ? 'btn-outline' : 'btn-primary'}" style="width:100%;" id="buy-whatsapp-btn">
-          ${product.soldOut ? "Avise-me quando chegar" : "Comprar pelo WhatsApp"}
+          ${product.soldOut ? "Avise-me quando chegar" : "Adicionar à sacola"}
         </button>
         <span id="size-warning" class="size-warning"></span>
         <div style="display:flex; gap:12px; margin-top:14px;">
@@ -69,6 +69,18 @@ ${hasDiscount(product) ? `<div class="bf-tag">Esquenta Black Friday · ${BLACK_F
     </div>
   `;
 
+  if (!product.soldOut) {
+    const buy=document.getElementById('buy-whatsapp-btn');
+    buy.insertAdjacentHTML('beforebegin', '<label class="color-label" for="product-color">Cor desejada (opcional)</label><input class="color-input" id="product-color" maxlength="60" placeholder="Cor da foto ou outra cor cadastrada"><p class="purchase-help">As cores e a disponibilidade por tamanho serão confirmadas no atendimento.</p>');
+    const variants=PRODUCT_VARIANTS[product.id];
+    if(variants){
+      const field=document.getElementById('product-color');
+      field.outerHTML='<select class="color-input" id="product-color">'+Object.keys(variants).map(color=>'<option>'+escapeHTML(color)+'</option>').join('')+'</select>';
+      document.querySelector('label[for="product-color"]').textContent='Cor';
+    }
+    buy.insertAdjacentHTML('afterend','<a class="bag-next" href="sacola.html">Ver sacola e desconto →</a><button type="button" class="size-guide-link" id="ask-measures">Consultar medidas desta peça</button>');
+    document.getElementById('ask-measures').onclick=()=>openWhatsApp('Olá! Preciso das medidas da peça '+product.name+' (código '+product.id+'). '+location.href);
+  }
   setupLightbox(product);
   setupShareButton(product);
   setupDetailFavorite(product);
@@ -233,7 +245,7 @@ function sizeSelectorHTML(product) {
           `;
         }).join("")}
       </div>
-      ${isSingleSize && product.sizeInfo ? `<p class="size-info-note">${product.sizeInfo}</p>` : ""}
+      ${product.sizeInfo ? `<p class="size-info-note">${product.sizeInfo}</p>` : ""}
       ${firstAvailableIndex === -1 ? '<span class="size-warning" style="display:block;margin-top:8px;">Todos os tamanhos estão esgotados no momento.</span>' : ""}
     </div>
   `;
@@ -256,15 +268,24 @@ function setupSizeSelector(product) {
     });
   });
 
+  const colorField=document.getElementById('product-color');
+  function updateVariantSizes(){
+    if(!PRODUCT_VARIANTS[product.id])return;
+    buttons.forEach(btn=>{const enabled=validVariant(product.id,btn.dataset.size,colorField.value);btn.disabled=!enabled;btn.classList.toggle('sold-out',!enabled);btn.classList.remove('active');});
+    const first=[...buttons].find(btn=>!btn.disabled);selectedSize=first?.dataset.size || null;if(first)first.classList.add('active');
+  }
+  colorField.addEventListener('change',updateVariantSizes);updateVariantSizes();
   buyBtn.addEventListener("click", () => {
     if (!selectedSize) {
       warning.textContent = "Todos os tamanhos estão esgotados. Fale conosco para saber sobre reposição.";
       return;
     }
-    const sizeText = selectedSize === "Único" ? "" : ` — Tamanho ${selectedSize}`;
-    openWhatsApp(
-      `Olá! Tenho interesse na peça: ${product.name}${sizeText} (${formatPrice(getFinalPrice(product))}) — Esquenta Black Friday.`
-    );
+    try {
+      addToBag(product.id, selectedSize, document.getElementById('product-color').value.trim() || 'Cor da foto');
+      warning.textContent='Peça adicionada! Abra a sacola para conferir o desconto.';
+      warning.setAttribute('role','status');
+    } catch(err) { warning.textContent=err.message; }
+
   });
 }
 
@@ -281,7 +302,7 @@ function setupSizeGuide() {
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <h3>Guia de tamanhos</h3>
-      <p class="size-guide-note">Medidas aproximadas em centímetros. Em caso de dúvida entre dois tamanhos, recomendamos escolher o maior.</p>
+      <p class="size-guide-note">Referência geral em centímetros; não são medidas específicas desta peça. Confirme as medidas com a equipe antes de escolher.</p>
       <table class="size-guide-table">
         <thead>
           <tr><th>Tamanho</th><th>Busto</th><th>Cintura</th><th>Quadril</th></tr>
